@@ -30,8 +30,8 @@ Widget::Widget(QWidget *parent)
 	layout->addWidget(new QLabel("Treshold",this),1,0);
 
 	tresholdSlider = new QSlider(Qt::Horizontal,this);
-	tresholdSlider->setRange(50,180);
-	tresholdSlider->setSliderPosition(140);
+	tresholdSlider->setRange(80,150);
+	tresholdSlider->setSliderPosition(120);
 	layout->addWidget(tresholdSlider,1,1,1,2);
 
 	fpsCounter = new QLabel("FPS",this);
@@ -64,7 +64,7 @@ Widget::~Widget()
 
 void Widget::setAngle(double a) {
 	stream<<"A "<<a<<endl;
-	slider->setValue(a*100);
+	slider->setValue(a*50);
 }
 
 void Widget::showFrame(IplImage * image, IplImage* image3) {
@@ -79,5 +79,5 @@ void Widget::showFPS(int fps) {
 }
 
 void Widget::changeTreshold() {
-	tresholdSlider->setValue(tresholdSlider->value()+(qrand()%2?10:-10));
+	tresholdSlider->setValue(tresholdSlider->value()+(qrand()%2?20:-20));
 }

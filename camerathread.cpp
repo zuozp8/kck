@@ -80,15 +80,20 @@ void CameraThread::run() {
 
 			double check=0;
 			//check+= abs(huMoments->hu1-0.161)*10;
-			//check+= abs(log10(huMoments->hu2)+4.6)/20;
-			//check+= abs(log10(huMoments->hu3)+6.4)/10;
 			//check+= abs(log10(huMoments->hu4)+7.1)/10;
-			check+= abs(huMoments->hu1-0.196)*10;
-			check+= abs(huMoments->hu3-0.0042)*100;
-			if (r.width<50)
-				check+=(50-r.width)/40;
-			if (r.height<50)
-				check+=(50-r.height)/40;
+
+			//check+= abs(huMoments->hu1-0.185)*10;
+			//check+= abs(log10(huMoments->hu2)+4.7)/20;
+			//check+= abs(log10(huMoments->hu3)+2.92);
+
+			check+= abs(huMoments->hu1-0.20)*10;
+			check+= abs(huMoments->hu2-0.004)*10;
+			check+= abs(huMoments->hu3-0.0041)*100;
+
+			if (r.width<100)
+				check+=(100-r.width)/40;
+			if (r.height<100)
+				check+=(100-r.height)/40;
 			if (r.height>h*3/4)
 				check+=0.1;
 			if (r.width>w*3/4)
@@ -116,11 +121,15 @@ void CameraThread::run() {
 				cvLine(image3, pointS, pointV, CV_RGB(255,255,255), 2);
 				pointS.y+=4;
 				pointV = pointS;
-				pointV.x+=100*abs(huMoments->hu1-0.196)*10;
+				pointV.x+=100*(huMoments->hu1-0.20)*10;
 				cvLine(image3, pointS, pointV, CV_RGB(200,200,200), 2);
 				pointS.y+=4;
 				pointV = pointS;
-				pointV.x+=100*abs(huMoments->hu3-0.0042)*100;
+				pointV.x+=100*(huMoments->hu2-0.004)*10;
+				cvLine(image3, pointS, pointV, CV_RGB(200,200,200), 2);
+				pointS.y+=4;
+				pointV = pointS;
+				pointV.x+=100*(huMoments->hu3-0.0041)*100;;
 				cvLine(image3, pointS, pointV, CV_RGB(200,200,200), 2);
 
 				if (hu) {

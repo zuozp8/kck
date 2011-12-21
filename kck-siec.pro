@@ -17,5 +17,5 @@ SOURCES += main.cpp\
 HEADERS  += widget.hpp \
     camerathread.hpp
 
-LIBS += -lcv -lcxcore -lhighgui
+LIBS += -lopencv_core -lopencv_highgui
 
